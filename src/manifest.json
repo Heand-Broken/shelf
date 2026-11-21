@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "__MSG_extName__",
+  "description": "__MSG_extDesc__",
+  "version": "0.1.1",
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAlW86JuTEJJ0xBL7LOpC/zxXGIY5FpO/Lua9tOPj21OIzq0FbKgkMLYj6geZYxPkRIkS88bADO4dFvhFP+zgXvxgkX5YnY8EUIlV7jONbmrst6rv6akLenhZngZvLe1CKjuFyACUXdQkBaCv6MxjnmhtA21B8JdD/G8U6V0VLf6aNNrrDVHSTRNIAB538BCytddKx9bIqivU013ULcEsmn7DTPFNwvl7/eTFXwncU46YlWWrAHbiUBf0fnCtqCs74cjqCqZCv/Y7eiWrcA2+AL8bsaR0c27t32UNCjhxaQ9TuuDaU16EsDfyt5pPV9lI6S06iFAA2L9S1b/b4nogrBQIDAQAB",
+  "default_locale": "en",
+  "minimum_chrome_version": "114",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "__MSG_actionTitle__",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "permissions": [
+    "storage",
+    "unlimitedStorage",
+    "scripting",
+    "sidePanel",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "optional_host_permissions": [
+    "https://api.openai.com/*",
+    "https://api.deepseek.com/*",
+    "https://dashscope.aliyuncs.com/*"
+  ],
+  "commands": {
+    "save-page": {
+      "suggested_key": {
+        "default": "Alt+S"
+      },
+      "description": "__MSG_cmdSave__"
+    }
+  }
+}

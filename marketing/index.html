@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>Shelf store shot</title>
+    <style>
+      :root {
+        --bg: #f4f2ea;
+        --surface: #fbfaf7;
+        --ink: #23231f;
+        --ink2: #5f5e5a;
+        --ink3: #918e85;
+        --line: rgba(35, 35, 31, 0.14);
+        --accent: #b1741a;
+        --serif: Georgia, "Songti SC", "Noto Serif CJK SC", serif;
+        --sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      }
+      * { box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        padding: 0;
+        width: 1280px;
+        height: 800px;
+        overflow: hidden;
+      }
+      body {
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 64px;
+        font-family: var(--sans);
+        color: var(--ink);
+        padding: 0 64px;
+      }
+      .copy {
+        width: 400px;
+        flex: 0 0 auto;
+      }
+      .kicker {
+        font-size: 11px;
+        letter-spacing: 0.16em;
+        color: var(--accent);
+        margin-bottom: 20px;
+      }
+      h1 {
+        font-family: var(--serif);
+        font-size: 37px;
+        line-height: 1.28;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+        margin: 0 0 18px;
+        white-space: pre-line;
+      }
+      p {
+        font-size: 14.5px;
+        line-height: 1.85;
+        color: var(--ink2);
+        margin: 0;
+        max-width: 34ch;
+        text-wrap: pretty;
+      }
+      .rule {
+        width: 36px;
+        height: 1px;
+        background: var(--accent);
+        margin: 26px 0 16px;
+        opacity: 0.6;
+      }
+      .foot {
+        font-size: 11.5px;
+        color: var(--ink3);
+        letter-spacing: 0.02em;
+      }
+      .device {
+        flex: 0 0 auto;
+        width: 420px;
+        height: 740px;
+        border-radius: 13px;
+        overflow: hidden;
+        border: 0.5px solid var(--line);
+        background: var(--surface);
+        box-shadow: 0 14px 44px rgba(35, 35, 31, 0.13), 0 2px 6px rgba(35, 35, 31, 0.06);
+      }
+      iframe {
+        width: 100%;
+        height: 100%;
+        border: 0;
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="copy">
+      <div class="kicker" id="kicker"></div>
+      <h1 id="head"></h1>
+      <div class="rule"></div>
+      <p id="body"></p>
+      <div style="margin-top: 34px" class="foot" id="foot">Shelf · Local-first · No account · Exportable</div>
+    </div>
+    <div class="device"><iframe id="app" title="Shelf side panel"></iframe></div>
+
+    <script>
+      const SCENES = [
+        {
+          kicker: 'SHELF · LOCAL-FIRST READING',
+          head: 'Save any page\ninto a shelf of your own',
+          body: 'Press Alt+S and the article text is extracted, de-duplicated and stored locally. Search reaches into the body of what you saved, not just the title.',
+          src: '/preview/index.html?theme=light&view=shelf&seed=1',
+        },
+        {
+          kicker: 'READER · READING VIEW',
+          head: 'Clean enough\nto leave only the words',
+          body: 'Navigation, sidebars, comments and pop-ups are stripped out. Type size, leading and measure are adjustable, and it reopens where you stopped.',
+          src: '/preview/index.html?theme=light&view=reader&seed=1',
+        },
+        {
+          kicker: 'ADS · ALWAYS OPT-OUT',
+          head: 'Two sponsored slots.\nBoth can be turned off.',
+          body: 'One at the bottom of the shelf, one at the end of an article. Both are labeled SPONSORED, both dismiss permanently, and a master switch in settings removes them. Nothing else changes.',
+          src: '/preview/index.html?theme=light&view=ads&seed=1',
+        },
+        {
+          kicker: 'THEME · DARK',
+          head: 'Three backgrounds,\none set of type rules',
+          body: 'Light, sepia and dark, or follow the system. The measure is computed in characters, so changing the size never leaves a ragged edge.',
+          src: '/preview/index.html?theme=dark&view=shelf&seed=1',
+        },
+      ];
+
+      const idx = Math.max(0, Math.min(SCENES.length - 1, Number(new URLSearchParams(location.search).get('scene') || 1) - 1));
+      const s = SCENES[idx];
+      document.getElementById('kicker').textContent = s.kicker;
+      document.getElementById('head').textContent = s.head;
+      document.getElementById('body').textContent = s.body;
+      document.getElementById('app').src = s.src;
+    </script>
+  </body>
+</html>

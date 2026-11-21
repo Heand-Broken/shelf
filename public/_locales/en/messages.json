@@ -1,0 +1,18 @@
+{
+  "extName": {
+    "message": "Shelf — read later, kept on your device",
+    "description": "Extension name shown in the store and toolbar"
+  },
+  "extDesc": {
+    "message": "Save any page to a bookshelf inside your browser. Search it, read it clean, export to Markdown. No account, no cloud, no tracking.",
+    "description": "Store listing description, under 132 characters"
+  },
+  "actionTitle": {
+    "message": "Save this page to Shelf",
+    "description": "Toolbar button tooltip"
+  },
+  "cmdSave": {
+    "message": "Save the current page to Shelf",
+    "description": "Keyboard shortcut description"
+  }
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shelf preview</title>
+    <link rel="stylesheet" href="../dist/sidepanel.css" />
+    <script src="./mock-chrome.js"></script>
+  </head>
+  <body>
+    <div id="app" class="app">
+      <header class="topbar">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-name">拾页</span>
+        </div>
+        <div class="topbar-actions">
+          <button id="btn-save" class="btn btn-primary" type="button" title="保存当前页面 (Alt+S)">保存这一页</button>
+        </div>
+      </header>
+
+      <nav class="tabs" role="tablist">
+        <button class="tab is-active" data-view="shelf" role="tab" type="button">书架</button>
+        <button class="tab" data-view="reader" role="tab" type="button" disabled>阅读</button>
+        <button class="tab" data-view="settings" role="tab" type="button">设置</button>
+      </nav>
+
+      <main id="main" class="main" role="tabpanel"></main>
+
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    </div>
+
+    <script type="module" src="../dist/sidepanel.js"></script>
+    <script src="./seed.js"></script>
+  </body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Shelf</title>
+    <link rel="stylesheet" href="sidepanel.css" />
+    <style>
+      body {
+        background: var(--bg);
+        min-height: 100vh;
+        display: flex;
+        padding: 44px 28px;
+      }
+      .w {
+        margin: auto;
+        width: 100%;
+        max-width: 720px;
+      }
+      .w-brand {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 0.02em;
+        margin-bottom: 34px;
+      }
+      .w-brand .brand-mark {
+        width: 17px;
+        height: 18px;
+      }
+      .w h1 {
+        font-family: var(--font-read);
+        font-size: 30px;
+        font-weight: 500;
+        line-height: 1.25;
+        margin: 0 0 10px;
+        letter-spacing: -0.01em;
+      }
+      .w-lead {
+        font-size: 14px;
+        color: var(--ink-2);
+        line-height: 1.7;
+        margin: 0 0 34px;
+        max-width: 48ch;
+      }
+      .w-steps {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+        gap: 12px;
+        margin-bottom: 30px;
+      }
+      .w-step {
+        border: 0.5px solid var(--line-strong);
+        border-radius: var(--radius);
+        padding: 14px 15px 16px;
+        background: var(--surface);
+      }
+      .w-step-n {
+        font-size: 10px;
+        letter-spacing: 0.1em;
+        color: var(--accent);
+        margin-bottom: 7px;
+      }
+      .w-step-t {
+        font-size: 13px;
+        font-weight: 500;
+        margin: 0 0 5px;
+        line-height: 1.4;
+      }
+      .w-step-d {
+        font-size: 12px;
+        color: var(--ink-2);
+        line-height: 1.65;
+        margin: 0;
+      }
+      .w-notes {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 22px;
+        padding-top: 22px;
+        border-top: 0.5px solid var(--line);
+        margin-bottom: 32px;
+      }
+      .w-note h2 {
+        font-size: 11px;
+        font-weight: 500;
+        color: var(--ink-3);
+        margin: 0 0 6px;
+        letter-spacing: 0.04em;
+      }
+      .w-note p {
+        font-size: 12.5px;
+        color: var(--ink-2);
+        line-height: 1.75;
+        margin: 0;
+      }
+      .w-actions {
+        display: flex;
+        gap: 9px;
+        align-items: center;
+      }
+      .w-actions .btn {
+        font-size: 12.5px;
+        padding: 7px 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="w">
+      <div class="w-brand"><span class="brand-mark" aria-hidden="true"></span><span id="brand">Shelf</span></div>
+      <h1 id="title">Shelf is ready</h1>
+      <p class="w-lead" id="lead"></p>
+
+      <div class="w-steps" id="steps"></div>
+
+      <div class="w-notes">
+        <div class="w-note">
+          <h2 id="privacy-h"></h2>
+          <p id="privacy-b"></p>
+        </div>
+        <div class="w-note">
+          <h2 id="ads-h"></h2>
+          <p id="ads-b"></p>
+        </div>
+      </div>
+
+      <div class="w-actions">
+        <button class="btn btn-primary" id="done" type="button"></button>
+        <button class="btn" id="shortcuts" type="button"></button>
+      </div>
+    </main>
+    <script type="module" src="welcome.js"></script>
+  </body>
+</html>

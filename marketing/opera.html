@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>Opera shot</title>
+    <style>
+      * { box-sizing: border-box; }
+      html, body { margin: 0; width: 612px; height: 408px; overflow: hidden; }
+      body {
+        background: #e9e6de;
+        font-family: system-ui, -apple-system, "Segoe UI", "PingFang SC", sans-serif;
+        padding: 10px;
+      }
+      .win {
+        width: 592px;
+        height: 388px;
+        border-radius: 7px;
+        overflow: hidden;
+        background: #fff;
+        border: 0.5px solid rgba(35, 35, 31, 0.16);
+        display: flex;
+        flex-direction: column;
+      }
+      .bar {
+        height: 28px;
+        flex: 0 0 auto;
+        background: #f1efe9;
+        border-bottom: 0.5px solid rgba(35, 35, 31, 0.1);
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 0 9px;
+      }
+      .dots { display: flex; gap: 4px; }
+      .dot { width: 7px; height: 7px; border-radius: 50%; background: #d5d2c9; }
+      .url {
+        flex: 1;
+        height: 16px;
+        border-radius: 8px;
+        background: #fff;
+        border: 0.5px solid rgba(35, 35, 31, 0.08);
+        font-size: 9px;
+        color: #8f8c83;
+        display: flex;
+        align-items: center;
+        padding: 0 8px;
+      }
+      .page { flex: 1; display: flex; min-height: 0; }
+      .article {
+        width: 172px;
+        flex: 0 0 auto;
+        padding: 14px 13px;
+        background: #fdfcfa;
+        border-right: 0.5px solid rgba(35, 35, 31, 0.1);
+      }
+      .art-kicker {
+        font-size: 8px;
+        letter-spacing: 0.1em;
+        color: #b1741a;
+        margin-bottom: 8px;
+      }
+      .art-h {
+        font-family: Georgia, "Songti SC", serif;
+        font-size: 14px;
+        line-height: 1.35;
+        font-weight: 500;
+        margin: 0 0 9px;
+      }
+      .art-line { height: 4px; background: #e9e5dc; border-radius: 2px; margin-bottom: 5px; }
+      .art-line.short { width: 64%; }
+      .art-saved {
+        margin-top: 13px;
+        border: 0.5px dashed #c8912f;
+        background: #faeeda;
+        border-radius: 5px;
+        padding: 5px 7px;
+        font-size: 8.5px;
+        color: #7d4a08;
+        line-height: 1.4;
+      }
+      .panel { flex: 1; min-width: 0; background: #fbfaf7; }
+      iframe { width: 100%; height: 100%; border: 0; display: block; }
+    </style>
+  </head>
+  <body>
+    <div class="win">
+      <div class="bar">
+        <div class="dots"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+        <div class="url" id="url"></div>
+      </div>
+      <div class="page">
+        <div class="article">
+          <div class="art-kicker">SAVED ARTICLE</div>
+          <div class="art-h" id="art-h"></div>
+          <div class="art-line"></div>
+          <div class="art-line"></div>
+          <div class="art-line short"></div>
+          <div class="art-line"></div>
+          <div class="art-line short"></div>
+          <div class="art-saved" id="art-saved"></div>
+        </div>
+        <div class="panel"><iframe id="app" title="Shelf side panel"></iframe></div>
+      </div>
+    </div>
+
+    <script>
+      const SCENES = [
+        {
+          url: 'developer.chrome.com / why-your-extension-was-rejected',
+          head: 'Why your extension got rejected',
+          saved: 'Saved to Shelf — text extracted, de-duplicated, stored locally.',
+          src: '/preview/index.html?theme=light&view=shelf&seed=1',
+        },
+        {
+          url: 'readability.dev / how-the-reader-picks-the-article',
+          head: 'How the reader picks the article',
+          saved: 'Saved to Shelf — clean reading view, adjustable type.',
+          src: '/preview/index.html?theme=light&view=reader&seed=1',
+        },
+      ];
+      const idx = Math.max(0, Math.min(SCENES.length - 1, Number(new URLSearchParams(location.search).get('scene') || 1) - 1));
+      const s = SCENES[idx];
+      document.getElementById('url').textContent = s.url;
+      document.getElementById('art-h').textContent = s.head;
+      document.getElementById('art-saved').textContent = s.saved;
+      document.getElementById('app').src = s.src;
+    </script>
+  </body>
+</html>
