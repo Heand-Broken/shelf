@@ -5,6 +5,22 @@
 
 Manifest V3 · TypeScript · esbuild · 无框架
 
+## Build from source
+
+```bash
+npm ci
+npm run build:firefox     # Firefox package  -> dist-firefox/
+npm run build             # Chrome/Edge/Opera -> dist/
+node scripts/pack.mjs     # per-channel zips  -> release/
+```
+
+Node 18+ and npm. The build uses **esbuild** (bundler + minifier) and **TypeScript** (type checking only).
+There is no code generation beyond esbuild bundling the sources under `src/`, no obfuscation, and no
+remote code is loaded at runtime. `npm run build:firefox` produces the exact package that is
+uploaded to AMO.
+
+Full documentation below.
+
 ---
 
 ## 商店上架状态
